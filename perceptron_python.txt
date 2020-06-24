@@ -1,0 +1,98 @@
+from random import random
+w1 = random()
+w2 = random()
+w3 = 1.95
+x0 = -1
+n = 0.1
+epocas = 0
+erro = 1
+
+f=open("/content/entradas.txt","r")
+contents=f.read()
+print(contents)
+type(contents)
+
+
+f=open("/content/saida.txt","r")
+contents2=f.read()
+print(contents2)
+type(contents2)
+
+
+def Convert(string):
+    li = list(string.split(" "))
+    return li
+a_string = contents.rstrip("\n")
+print(a_string)
+print(Convert(a_string))
+
+import numpy as np
+my_array = np.array((Convert(a_string)))
+print(my_array)
+
+a = np.reshape(my_array, (4,2))
+print(a)
+print(a[0,0])
+print(a[1,0])
+print(a[2,0])
+print(a[3,0])
+y = a.astype(np.int)
+print(y)
+print(y[0,0])
+print(y[1,0])
+print(y[2,0])
+print(y[3,0])
+
+
+def Convert(string):
+    li = list(string.split(" "))
+    return li
+b_string = contents2.rstrip("\n")
+print(b_string)
+print(Convert(b_string))
+
+import numpy as np
+my_array2 = np.array((Convert(b_string)))
+print(my_array2)
+
+b = np.reshape(my_array2, (4,1))
+print(b)
+print(b[0,0])
+print(b[1,0])
+print(b[2,0])
+print(b[3,0])
+z = b.astype(np.int)
+print(z)
+print(z[0,0])
+print(z[1,0])
+print(z[2,0])
+print(z[3,0])
+
+
+ for k in range(4):
+     g= w1* (y[k,0]) + w2* (y[k,1]) + x0*w3 
+     if g>=0:
+          u = 1
+     else:
+          u = 0 
+     print(u)
+
+
+
+while erro == 1:
+     for k in range(4):
+         g= w1* (y[k,0]) + w2* (y[k,1]) + x0*w3 
+         if g>=0:
+            u = 1
+         else:
+            u = 0 
+         print(u)
+     
+         if u == z[k,0]:
+            w1 = w1 + n * ((z[k,0]) - u) * (y[k,0])
+            w2 = w2 + n * ((z[k,0]) - u) * (y[k,1])
+            w3 = w3 + n * ((z[k,0])-  u) *  x0;
+            erro == 1
+         else:
+            erro == 0
+end
